@@ -73,7 +73,8 @@ exports.resolveConnection = (req,res,next) => {
     let tenant = req.query.tenant
 
     if(!tenant) return res.status(400).json({msg:"No tenant specified"})
-    let connection = getConnectionByTenant(tenant)
+    let connection = getConnectionByTenant(tenant) // this is comming from the dbConnectionManager.js
+  
     if(!connection) return res.status(400).json({msg:"Unauthorized tenant"})
     req.tenantConnection = connection
     next()
