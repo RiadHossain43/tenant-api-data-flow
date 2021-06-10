@@ -66,7 +66,7 @@ exports.getConnectionByTenant = (tenantName) => {
 ### Connection resolver
 
 `resolveConnection.js` is a middleware i created that is executed before every request can be processed.
-Here this function may help to understand the mapping process of
+Here this function may help to understand the mapping process of tenants
 
 ```
 exports.resolveConnection = (req,res,next) => {
