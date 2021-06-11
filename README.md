@@ -130,7 +130,7 @@ module.exports = (connection)=>{
 
 I only included the relavant informations from the model just not to complicate things. Sorry for my brevity.
 
-## API call
+## An API Endpoint looks like this
 
 `controllers/users.js` is handling the requests. Again i'll make it short not to make things complicated.
 
