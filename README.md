@@ -25,7 +25,7 @@ ADMIN_DB = tenantsDb
 // mongodb+srv://<my_datbase_user>:<password>@imssystems.bg1d4.mongodb.net is the clusters connections string
 // where 100 databases are allowed at most for an M2 cpu according to the atlas documentation
 
-let connectionMap - []
+let connectionMap = []
 
 const connect = db => mongoose.createConnection(process.env.MONGO_URI+`/${db}?retryWrites=true&w=majority`, {
 	useNewUrlParser: true,
