@@ -13,7 +13,7 @@ My target is to give separate dataBase to `tenant A` and `tenant B`
 
 `.env` file for help
 
-```
+```javascript
 MONGO_URI = mongodb+srv://<my_datbase_user>:<password>@imssystems.bg1d4.mongodb.net
 ADMIN_DB = tenantsDb
 
@@ -21,7 +21,7 @@ ADMIN_DB = tenantsDb
 
 `dbConnectionManager.js` file :
 
-```
+```javascript
 // mongodb+srv://<my_datbase_user>:<password>@imssystems.bg1d4.mongodb.net is the clusters connections string
 // where 100 databases are allowed at most for an M2 cpu according to the atlas documentation
 
@@ -68,7 +68,7 @@ exports.getConnectionByTenant = (tenantName) => {
 `resolveConnection.js` is a middleware i created that is executed before every request can be processed.
 Here this function may help to understand the mapping process of tenants
 
-```
+```javascript
 exports.resolveConnection = (req,res,next) => {
     let tenant = req.query.tenant
 
@@ -88,7 +88,7 @@ exports.resolveConnection = (req,res,next) => {
 
 `userModel.js` is an example model. Here i used mongoose to build the system.
 
-```
+```javascript
 const mongoose = require('mongoose');
 const UserSchema = new mongoose.Schema({
   name: {
@@ -134,7 +134,7 @@ I only included the relavant informations from the model just not to complicate 
 
 `controllers/users.js` is handling the requests. Again i'll make it short not to make things complicated.
 
-```
+```javascript
 let UsersModel = require('models/users')
 
 app.get('/api/users',resolveConnection,(req,res)=>{
