@@ -55,10 +55,10 @@ exports.connectAllDb = async () => {
 
 // this function actually maps a client request to it's relevant database
 exports.getConnectionByTenant = (tenantName) => {
-	if(/localhost/.test(tenantName)){
-		return connectionMap['localhost']
+	if (/localhost/.test(tenantName)) {
+		return databaseCluster.useDb('localhost',{useCache:true})
 	}
-	return connectionMap[tenantName]
+	return databaseCluster.useDb(tenantName,{useCache:true})
 }
 
 ```
