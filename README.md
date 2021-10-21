@@ -91,26 +91,7 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  email: {
-    type: String,
-    required: true,
-    unique: true
-  },
-  password: {
-    type: String,
-    required: true
-  },
-  role:{
-    name:{
-      type:String,
-      enum:['super','hos','auditor','basic','blocked'],
-      default:'basic'
-    },
-    permission:{
-      type:[String],
-      enum:['write','read','delete']
-    }
-  },
+  // more user realted fields
 },{timestamps:true});
 
 module.exports = (connection)=>{
