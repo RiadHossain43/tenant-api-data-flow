@@ -38,14 +38,10 @@ exports.connectAllDb = async () => {
 	try {
 		let adminConnection = await connect(process.env.ADMIN_DB)
 		let tenants = await Tetants(adminConnection).find({})
-		console.log('MongoDB admin Connected...\ntenants:',tenants);
-		// caching all the connections ...
-		connectionMap = await Promise.all(tenants.map(async tenant=>{
-			return { [tenant.name] :await connect(tenant.name) }
-		}))
-		connectionMap = connectionMap.reduce((prev,next)=>Object.assign({},prev,next))
-		console.log("Tenant connections created successfully.")
-
+		databaseCluster = adminConnection
+		console.log('MongoDB admin Connected...\ntenants:', tenants)
+		tenantsMap = tenants
+		console.log("Tenants cached successfully.")
 	} catch (err) {
 		console.error(err);
 		// Exit process with failure
